@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"modules/slices"
+	"strings"
+
+	"rsc.io/quote"
+)
 
 func main() {
-	fmt.Println("RSTech")
+	list := []string{"RSTech", "gophers", "golang", quote.Hello()}
+
+	slices.Filter(list, func(item string) bool {
+		return strings.HasPrefix(strings.ToLower(item), "h")
+	})
 }

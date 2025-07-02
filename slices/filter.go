@@ -15,7 +15,7 @@ func Filter[T constraints.Ordered](nums []T, callback func(T) bool) []T {
 			result = append(result, num)
 		}
 	}
-	log(fmt.Sprintf(" the result is : %v", result))
+	log(fmt.Sprintf("%s the result is : %v", pkgName, result))
 	return result
 
 }
