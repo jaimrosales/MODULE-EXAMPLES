@@ -1,0 +1,24 @@
+COMANDOS UTILES PARA TRABAJAR CON MODULOS
+
+    LISTADO DE VERSIONES Y DEPENDENCIAS
+    go list -m all----> listara todos los modulos y dependencia que tiene el proyecto nombre y version
+    go mod graph ----->listrara los paquetes y las dependencias que tiene
+    go list -m -versions "rsc.io/quote"------>listara y mostrara las versiones disponible de una paquete
+
+    ACTUALIZACION DE VERSIONES MENORES
+    go get "nombre del paquete"---------> automaticamente el paquete se actualizara a la ultima version menor disponible, en el go.mod, se veran las actualizaciones
+    go get "nombre del paquete"@v1.4.3------->sirve para descargar alguna version diferente a mas reciente como es el caso de rsc.io/sampler
+
+    ACTUALIZACION DE VERSIONES MAYORES
+    si se quiere utilizar un versionamiento mayor hay que agregar al import /v2 o /v3 o bien /vn
+    import "rsc.io/quote/v3"  en caso de tenr dos diferentes versiones mayores, sera necesario a alguna de ellas poner un alias como
+    "rsc.io/quote"          //version 1
+    quoteV3  "rsc.io/quote/v3" //version 3
+    una ves importado sera necesario utilizar go get "nombre del paquete,para el ejemplo "rsc.io/quote/v3""
+
+    si se  cambian todas las funciones de un paquete, en el ejemplo se remueven las de la version 1.0.3 y se usan 3.0.3
+    se rpodra eliminar el paquete de importaciones de la version 1 y se podra quitar el alias 
+    go mod tidy-----> eliminara V1.0.3
+
+    GO MOD TIDY
+    el comando go mod tidy permite importar las dependencias que necesitamos pero tambien limpia aquellas que no necesitamos
